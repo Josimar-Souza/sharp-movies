@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import {
   tvSeriesListType,
+  tvSeriesType,
 } from '../../../helpers/types/tvSeriesTypes';
 import ErrorCreator from '../../../helpers/error/errorCreator';
 
@@ -9,6 +10,7 @@ import {
   onTheAirErrorMessage,
   popularErrorMessage,
   topRatedErrorMessage,
+  tvSeriesDetailsErrorMessage,
 } from '../../../helpers/error/tvSeriesErrorMessages';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -86,6 +88,21 @@ class TVSeriesAPI {
       return results;
     } catch (e) {
       return new ErrorCreator(topRatedErrorMessage, e);
+    }
+  }
+
+  async GetTVSeriesDetails(tvSeriesID: number): Promise<tvSeriesType | ErrorCreator> {
+    try {
+      const { data } = await this.api.get(
+        `/tv/${tvSeriesID}`,
+        {
+          headers,
+        }
+      )
+
+      return data;
+    } catch (e) {
+      return new ErrorCreator(tvSeriesDetailsErrorMessage, e);
     }
   }
 }

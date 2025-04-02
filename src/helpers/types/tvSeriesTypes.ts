@@ -16,7 +16,7 @@ export type tvSeriesListType = [
   }
 ];
 
-export type tvSeries = {
+export type tvSeriesType = {
   adult: boolean,
   backdrop_path: string,
   created_by: [
@@ -110,5 +110,5 @@ export type tvSeries = {
   tagline: string,
   type: string,
   vote_average: number,
-  vote_count: number,
+  vote_count: number
 };
