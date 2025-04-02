@@ -6,6 +6,7 @@ import ErrorCreator from '../../../helpers/error/errorCreator';
 
 import {
   airingTodayErrorMessage,
+  onTheAirErrorMessage,
 } from '../../../helpers/error/tvSeriesErrorMessages';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -38,6 +39,21 @@ class TVSeriesAPI {
       return results;
     } catch (e) {
       return new ErrorCreator(airingTodayErrorMessage, e);
+    }
+  }
+
+  async GetOnTheAir(): Promise<tvSeriesListType | ErrorCreator> {
+    try {
+      const { data: { results } } = await this.api.get(
+        '/tv/on_the_air',
+        {
+          headers,
+        }
+      )
+
+      return results;
+    } catch (e) {
+      return new ErrorCreator(onTheAirErrorMessage, e);
     }
   }
 }
