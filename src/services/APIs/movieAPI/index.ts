@@ -62,7 +62,7 @@ class MoviesAPI {
 
   async GetTopRated(): Promise<MoviesListType | ErrorCreator> {
     try {
-      const { data: results } = await this.api.get(
+      const { data: { results } } = await this.api.get(
         '/movie/top_rated',
         {
           headers,
@@ -77,7 +77,7 @@ class MoviesAPI {
 
   async GetUpcoming(): Promise<MoviesListType | ErrorCreator> {
     try {
-      const { data: results } = await this.api.get(
+      const { data: { results } } = await this.api.get(
         '/movie/upcoming',
         {
           headers,
