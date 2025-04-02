@@ -7,6 +7,7 @@ import ErrorCreator from '../../../helpers/error/errorCreator';
 import {
   airingTodayErrorMessage,
   onTheAirErrorMessage,
+  popularErrorMessage,
 } from '../../../helpers/error/tvSeriesErrorMessages';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -54,6 +55,21 @@ class TVSeriesAPI {
       return results;
     } catch (e) {
       return new ErrorCreator(onTheAirErrorMessage, e);
+    }
+  }
+
+  async GetPopular(): Promise<tvSeriesListType | ErrorCreator> {
+    try {
+      const { data: { results } } = await this.api.get(
+        '/tv/popular',
+        {
+          headers,
+        }
+      )
+
+      return results;
+    } catch (e) {
+      return new ErrorCreator(popularErrorMessage, e)
     }
   }
 }
