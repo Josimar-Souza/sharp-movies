@@ -1,0 +1,1 @@
+export const airingTodayErrorMessage = 'Error trying to fetch airing today tv series';
