@@ -4,6 +4,8 @@ import { MoviesListType } from "../../../helpers/types/moviesTypes";
 import {
   nowPlayingMoviesError,
   popularMoviesError,
+  topRatedMoviesError,
+  upcomingMoviesError,
 } from "../../../helpers/error/errorMessages";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -51,6 +53,36 @@ class MoviesAPI {
       return results;
     } catch(e) {
       return new ErrorCreator(popularMoviesError, e);
+    }
+  }
+
+  async GetTopRated(): Promise<MoviesListType | ErrorCreator> {
+    try {
+      const { data: results } = await this.api.get(
+        '/movie/top_rated',
+        {
+          headers,
+        }
+      );
+
+      return results;
+    } catch(e) {
+      return new ErrorCreator(topRatedMoviesError, e);
+    }
+  }
+
+  async GetUpcoming(): Promise<MoviesListType | ErrorCreator> {
+    try {
+      const { data: results } = await this.api.get(
+        '/movie/upcoming',
+        {
+          headers,
+        }
+      );
+
+      return results;
+    } catch (e) {
+      return new ErrorCreator(upcomingMoviesError, e);
     }
   }
 }
