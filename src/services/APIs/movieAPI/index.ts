@@ -3,6 +3,7 @@ import ErrorCreator from "../../../helpers/error/errorCreator";
 import { MoviesListType } from "../../../helpers/types/moviesTypes";
 import {
   nowPlayingMoviesError,
+  popularMoviesError,
 } from "../../../helpers/error/errorMessages";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -25,13 +26,31 @@ class MoviesAPI {
 
   async GetNowPlaying(): Promise<MoviesListType | ErrorCreator> {
     try {
-      const { data: { results } } = await this.api.get(`/movie/now_playing`, {
-        headers,
-      });
+      const { data: { results } } = await this.api.get(
+        '/movie/now_playing',
+        {
+          headers,
+        },
+      );
 
       return results;
     } catch (e) {
       return new ErrorCreator(nowPlayingMoviesError, e);
+    }
+  }
+
+  async GetPopular(): Promise<MoviesListType | ErrorCreator> {
+    try {
+      const { data: { results } } = await this.api.get(
+        '/movie/popular',
+        {
+          headers,
+        }
+      )
+
+      return results;
+    } catch(e) {
+      return new ErrorCreator(popularMoviesError, e);
     }
   }
 }
