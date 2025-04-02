@@ -1,11 +1,15 @@
 import axios, { AxiosInstance } from "axios";
 import ErrorCreator from "../../../helpers/error/errorCreator";
-import { MoviesListType } from "../../../helpers/types/moviesTypes";
+import {
+  MoviesListType,
+  MovieType,
+ } from "../../../helpers/types/moviesTypes";
 import {
   nowPlayingMoviesError,
   popularMoviesError,
   topRatedMoviesError,
   upcomingMoviesError,
+  movieDetailsError,
 } from "../../../helpers/error/errorMessages";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -83,6 +87,21 @@ class MoviesAPI {
       return results;
     } catch (e) {
       return new ErrorCreator(upcomingMoviesError, e);
+    }
+  }
+
+  async GetMovieDetails(movieID: number): Promise<MovieType | ErrorCreator> {
+    try {
+      const { data } = await this.api.get(
+        `/movie/${movieID}`,
+        {
+          headers,
+        }
+      );
+
+      return data;
+    } catch (e) {
+      return new ErrorCreator(movieDetailsError, e);
     }
   }
 }
