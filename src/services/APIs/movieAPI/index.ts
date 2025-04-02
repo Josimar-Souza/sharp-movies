@@ -10,7 +10,7 @@ import {
   topRatedMoviesError,
   upcomingMoviesError,
   movieDetailsError,
-} from "../../../helpers/error/errorMessages";
+} from "../../../helpers/error/moviesErrorMessages";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 const apiToken = import.meta.env.VITE_API_TOKEN;
