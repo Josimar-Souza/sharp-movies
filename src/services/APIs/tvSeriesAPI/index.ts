@@ -8,6 +8,7 @@ import {
   airingTodayErrorMessage,
   onTheAirErrorMessage,
   popularErrorMessage,
+  topRatedErrorMessage,
 } from '../../../helpers/error/tvSeriesErrorMessages';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -70,6 +71,21 @@ class TVSeriesAPI {
       return results;
     } catch (e) {
       return new ErrorCreator(popularErrorMessage, e)
+    }
+  }
+
+  async GetTopRated(): Promise<tvSeriesListType | ErrorCreator> {
+    try {
+      const { data: { results } } = await this.api.get(
+        '/tv/top_rated',
+        {
+          headers,
+        }
+      );
+
+      return results;
+    } catch (e) {
+      return new ErrorCreator(topRatedErrorMessage, e);
     }
   }
 }
