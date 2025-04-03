@@ -2,7 +2,7 @@ import { MoviesListType } from "../../helpers/types/moviesTypes";
 
 export type MoviesContextType = {};
 
-export type DefaultMoviesType = {
+export type MoviesListsType = {
   nowPlaying: MoviesListType,
   popular: MoviesListType,
   topRated: MoviesListType,

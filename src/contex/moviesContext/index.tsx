@@ -4,7 +4,7 @@ import {
   useState,
   useMemo,
 } from "react";
-import { MoviesContextType, DefaultMoviesType } from "./moviesContextTypes";
+import { MoviesContextType, MoviesListsType } from "./moviesContextTypes";
 import MoviesAPI from "../../services/APIs/movieAPI";
 import ErrorCreator from "../../helpers/error/errorCreator";
 
@@ -16,7 +16,7 @@ const moviesContext = createContext<MoviesContextType>({});
 const moviesAPI = new MoviesAPI(5000);
 
 function MoviesProvider({ children }: MoviesProviderType) {
-  const [defaultMovies, setDefaultMovies] = useState<DefaultMoviesType>();
+  const [moviesLists, setMoviesLists] = useState<MoviesListsType>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function MoviesProvider({ children }: MoviesProviderType) {
         !(topRated instanceof ErrorCreator) &&
         !(upcoming instanceof ErrorCreator)
       ) {
-        setDefaultMovies(
+        setMoviesLists(
           {
             nowPlaying,
             popular,
@@ -51,9 +51,9 @@ function MoviesProvider({ children }: MoviesProviderType) {
   }, []);
 
   const contextValues = useMemo(() => ({
-    defaultMovies,
+    moviesLists,
     isLoading,
-  }), [defaultMovies, isLoading]);
+  }), [moviesLists, isLoading]);
 
   return (
     <moviesContext.Provider value={contextValues}>
