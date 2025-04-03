@@ -1,7 +1,9 @@
+import Hero from "./components/hero"
+
 function App() {
   return (
     <>
-      <h1>Initializing project</h1>
+      <Hero />
     </>
   )
 }
