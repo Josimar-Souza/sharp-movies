@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { moviesContext } from '../../contex/moviesContext';
+import { MovieType } from '../../helpers/types/moviesTypes';
 
 const imageBaseUrl = import.meta.env.VITE_API_IMAGE_BASE_URL;
 
@@ -10,21 +11,26 @@ import {
 } from './heroStyles';
 
 function Hero() {
+  const [movie, setMovie] = useState<MovieType>();
+
   const { moviesLists } = useContext(moviesContext);
 
-  const getMovieBackdropImage = () => {
-    const randomMovie = moviesLists?.topRated[Math.floor(Math.random() * 20)];
+  useEffect(() => {
+    const getRandomMovie = () => {
+      const randomMovie = moviesLists?.topRated[Math.floor(Math.random() * 20)];
 
-    if (randomMovie != undefined) {
-      return `${imageBaseUrl}${randomMovie.backdrop_path}`;
-    }
+      setMovie(randomMovie);
+    };
 
-    return '';
-  };
+    getRandomMovie()
+  }, [moviesLists]);
 
   return (
     <HeroContainer>
-      <HeroImage src={getMovieBackdropImage()} />
+      <HeroImage
+        src={`${imageBaseUrl}${movie?.backdrop_path}`}
+        alt={`${movie?.title} backdrop image`}
+      />
       <LeftSideFade />
     </HeroContainer>
   )
