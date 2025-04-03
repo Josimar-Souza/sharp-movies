@@ -17,3 +17,16 @@ export const LeftSideFade = styled.div`
   position: absolute;
   top: 0;
 `;
+
+export const InfosContainer = styled.div`
+  border: 1px solid red;
+  width: 20%;
+  height: 40vh;
+  position: absolute;
+  top: 30vh;
+  left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+`;
