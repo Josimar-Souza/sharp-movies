@@ -20,7 +20,7 @@ export const LeftSideFade = styled.div`
 
 export const InfosContainer = styled.div`
   border: 1px solid red;
-  width: 20%;
+  width: 30%;
   height: 40vh;
   position: absolute;
   top: 30vh;
@@ -31,9 +31,10 @@ export const InfosContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const InfosSection = styled.div`
+export const TitleSection = styled.div`
+  border: 1px solid yellow;
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;

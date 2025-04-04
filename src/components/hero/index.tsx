@@ -11,7 +11,7 @@ import {
   HeroImage,
   LeftSideFade,
   InfosContainer,
-  InfosSection,
+  TitleSection,
 } from './heroStyles';
 
 function Hero() {
@@ -46,9 +46,11 @@ function Hero() {
       />
       <LeftSideFade />
       <InfosContainer>
-        <InfosSection>
+        <TitleSection>
           <Title
             textcolor="white"
+            fontSize="3em"
+            width="70%"
           >
             {movie?.title}
           </Title>
@@ -62,13 +64,13 @@ function Hero() {
           >
             { getVoteValue().toFixed(0) }%
           </Paragraph>
-          <Paragraph
+        </TitleSection>
+        <Paragraph
             textcolor="white"
             fontSize="1.5em"
           >
             { `Release date: ${movie?.release_date}` }
           </Paragraph>
-        </InfosSection>
       </InfosContainer>
     </HeroContainer>
   )
