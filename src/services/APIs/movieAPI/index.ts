@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import ErrorCreator from "../../../helpers/error/errorCreator";
 import {
   MoviesListType,
-  MovieType,
+  MovieDetailsType,
  } from "../../../helpers/types/moviesTypes";
 import {
   nowPlayingMoviesError,
@@ -90,7 +90,7 @@ class MoviesAPI {
     }
   }
 
-  async GetMovieDetails(movieID: number): Promise<MovieType | ErrorCreator> {
+  async GetMovieDetails(movieID: number): Promise<MovieDetailsType | ErrorCreator> {
     try {
       const { data } = await this.api.get(
         `/movie/${movieID}`,

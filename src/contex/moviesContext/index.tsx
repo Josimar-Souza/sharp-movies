@@ -12,7 +12,10 @@ type MoviesProviderType = {
   children: React.ReactNode,
 }
 
-const moviesContext = createContext<MoviesContextType>({});
+export const moviesContext = createContext<MoviesContextType>({
+  moviesLists: undefined,
+  isLoading: false,
+});
 const moviesAPI = new MoviesAPI(5000);
 
 function MoviesProvider({ children }: MoviesProviderType) {
