@@ -19,7 +19,6 @@ export const LeftSideFade = styled.div`
 `;
 
 export const InfosContainer = styled.div`
-  border: 1px solid red;
   width: 30%;
   min-height: 40vh;
   position: absolute;
@@ -32,7 +31,6 @@ export const InfosContainer = styled.div`
 `;
 
 export const TitleSection = styled.div`
-  border: 1px solid yellow;
   width: 100%;
   display: flex;
   align-items: center;

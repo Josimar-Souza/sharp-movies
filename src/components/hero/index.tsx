@@ -4,6 +4,7 @@ import { MovieType } from '../../helpers/types/moviesTypes';
 import Title from '../base/title';
 import Paragraph from '../base/paragraph';
 import CustomButton from '../base/button';
+import dateFormatter from '../../helpers/dateFormatter';
 
 const imageBaseUrl = import.meta.env.VITE_API_IMAGE_BASE_URL;
 
@@ -75,7 +76,7 @@ function Hero() {
             fontSize="1.5em"
             margin="10px"
           >
-            { `Release date: ${movie?.release_date}` }
+            { `Release date: ${dateFormatter(movie?.release_date, 'en-US')}` }
           </Paragraph>
           <Paragraph
             textcolor="white"
