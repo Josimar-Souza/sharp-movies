@@ -11,6 +11,7 @@ import {
   HeroImage,
   LeftSideFade,
   InfosContainer,
+  InfosSection,
 } from './heroStyles';
 
 function Hero() {
@@ -27,6 +28,15 @@ function Hero() {
 
     getRandomMovie()
   }, [moviesLists]);
+
+  const getVoteValue = () => {
+    if (movie?.vote_average != undefined) {
+      return (movie.vote_average / 10) * 100;
+    }
+
+    return 0;
+  };
+
   console.log(movie);
   return (
     <HeroContainer>
@@ -36,17 +46,29 @@ function Hero() {
       />
       <LeftSideFade />
       <InfosContainer>
-        <Title
-          textcolor="white"
-        >
-          {movie?.title}
-        </Title>
-        <Paragraph
-          textcolor="white"
-          fontSize="1.5em"
-        >
-          { `Release date: ${movie?.release_date}` }
-        </Paragraph>
+        <InfosSection>
+          <Title
+            textcolor="white"
+          >
+            {movie?.title}
+          </Title>
+          <Paragraph
+            textcolor="white"
+            fontSize="1.2em"
+            borderRadius='50%'
+            backgroundColor="green"
+            padding="15px 10px 15px 10px"
+            margin="20px"
+          >
+            { getVoteValue().toFixed(0) }%
+          </Paragraph>
+          <Paragraph
+            textcolor="white"
+            fontSize="1.5em"
+          >
+            { `Release date: ${movie?.release_date}` }
+          </Paragraph>
+        </InfosSection>
       </InfosContainer>
     </HeroContainer>
   )
