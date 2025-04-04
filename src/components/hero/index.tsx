@@ -13,7 +13,7 @@ import {
   HeroImage,
   LeftSideFade,
   InfosContainer,
-  TitleSection,
+  HorizontalSection,
 } from './heroStyles';
 
 function Hero() {
@@ -23,7 +23,7 @@ function Hero() {
 
   useEffect(() => {
     const getRandomMovie = () => {
-      const randomMovie = moviesLists?.topRated[Math.floor(Math.random() * 20)];
+      const randomMovie = moviesLists?.nowPlaying[Math.floor(Math.random() * 20)];
 
       setMovie(randomMovie);
     };
@@ -39,11 +39,26 @@ function Hero() {
     return 0;
   };
 
+  const getRatingColor = () => {
+    if (movie?.vote_average != undefined) {
+      if (movie?.vote_average <= 3.33) {
+        return 'red';
+      }
+
+      if (movie.vote_average > 0.33 && movie.vote_average <= 6.66) {
+        return 'yellow';
+      }
+
+      return 'green'
+    }
+
+    return 'green';
+  };
+
   const handleSeeMoreButton = () => {
     console.log('See more clicked!');
   }
 
-  console.log(movie);
   return (
     <HeroContainer>
       <HeroImage
@@ -52,32 +67,32 @@ function Hero() {
       />
       <LeftSideFade />
       <InfosContainer>
-        <TitleSection>
-          <Title
-            textcolor="white"
-            fontSize="3em"
-            width="70%"
-          >
-            {movie?.title}
-          </Title>
+        <Title
+          textcolor="white"
+          fontSize="3em"
+          width="70%"
+        >
+          {movie?.title}
+        </Title>
+        <HorizontalSection>
           <Paragraph
-            textcolor="white"
-            fontSize="1.2em"
-            borderRadius='50%'
-            backgroundColor="green"
-            padding="15px 10px 15px 10px"
-            margin="20px"
-          >
-            { getVoteValue().toFixed(0) }%
-          </Paragraph>
-        </TitleSection>
-        <Paragraph
-            textcolor="white"
-            fontSize="1.5em"
-            margin="10px"
-          >
-            { `Release date: ${dateFormatter(movie?.release_date, 'en-US')}` }
-          </Paragraph>
+              textcolor="white"
+              fontSize="1.5em"
+              margin="10px"
+            >
+              { `Release date: ${dateFormatter(movie?.release_date, 'en-US')}` }
+            </Paragraph>
+            <Paragraph
+              textcolor="#002244"
+              fontSize="1.2em"
+              borderRadius='50%'
+              backgroundColor={getRatingColor()}
+              padding="15px 10px 15px 10px"
+              margin="20px"
+            >
+              { getVoteValue().toFixed(0) }%
+            </Paragraph>
+          </HorizontalSection>
           <Paragraph
             textcolor="white"
             fontSize="1.5em"
