@@ -21,7 +21,7 @@ export const LeftSideFade = styled.div`
 export const InfosContainer = styled.div`
   border: 1px solid red;
   width: 30%;
-  height: 40vh;
+  min-height: 40vh;
   position: absolute;
   top: 30vh;
   left: 10%;

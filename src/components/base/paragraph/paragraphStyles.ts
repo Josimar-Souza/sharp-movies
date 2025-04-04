@@ -7,6 +7,7 @@ type ParagraphElementProps = {
   backgroundColor?: string,
   padding?: string,
   margin?: string,
+  text_align?: string,
 }
 
 const ParagraphElement = styled.p<ParagraphElementProps>`
@@ -16,6 +17,7 @@ const ParagraphElement = styled.p<ParagraphElementProps>`
   font-size: ${({ fontSize }) => fontSize ? fontSize : '16px'};
   padding: ${({ padding }) => padding ? padding : '0'};
   margin: ${({ margin }) => margin ? margin : '0'};
+  text-align: ${({ text_align }) => text_align ? text_align : 'center'}
 `;
 
 export default ParagraphElement;

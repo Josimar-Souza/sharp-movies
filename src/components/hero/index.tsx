@@ -68,8 +68,23 @@ function Hero() {
         <Paragraph
             textcolor="white"
             fontSize="1.5em"
+            margin="10px"
           >
             { `Release date: ${movie?.release_date}` }
+          </Paragraph>
+          <Paragraph
+            textcolor="white"
+            fontSize="1.5em"
+            margin="20px 0 0 0"
+          >
+            Overview
+          </Paragraph>
+        <Paragraph
+            textcolor="white"
+            fontSize="1.3em"
+            margin="5px"
+          >
+            { movie?.overview }
           </Paragraph>
       </InfosContainer>
     </HeroContainer>
