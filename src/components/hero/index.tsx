@@ -3,6 +3,7 @@ import { moviesContext } from '../../contex/moviesContext';
 import { MovieType } from '../../helpers/types/moviesTypes';
 import Title from '../base/title';
 import Paragraph from '../base/paragraph';
+import CustomButton from '../base/button';
 
 const imageBaseUrl = import.meta.env.VITE_API_IMAGE_BASE_URL;
 
@@ -36,6 +37,10 @@ function Hero() {
 
     return 0;
   };
+
+  const handleSeeMoreButton = () => {
+    console.log('See more clicked!');
+  }
 
   console.log(movie);
   return (
@@ -86,6 +91,16 @@ function Hero() {
           >
             { movie?.overview }
           </Paragraph>
+          <CustomButton
+            size="large"
+            color="red"
+            font_size="1.5em"
+            font_weight="bold"
+            margin="50px 0 0 0"
+            onClick={handleSeeMoreButton}
+          >
+            See more
+          </CustomButton>
       </InfosContainer>
     </HeroContainer>
   )
